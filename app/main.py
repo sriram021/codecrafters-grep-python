@@ -23,10 +23,16 @@ def main():
     print("Logs from your program will appear here!")
 
     # Uncomment this block to pass the first stage
-    if match_pattern(input_line, pattern):
-        exit(0)
-    else:
-        exit(1)
+    def match_pattern(input_line, pattern):
+       
+        if len(pattern)==1:
+            return pattern in input_line
+        elif pattern=="\\d":
+            return any(c.isdigit() for c in input_line)
+        else:
+            raise RuntimeError(f"Unhandled pattern: {pattern}")
+        
+        
 
 
 if __name__ == "__main__":
