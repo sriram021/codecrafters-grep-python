@@ -5,10 +5,13 @@ import sys
 
 
 def match_pattern(input_line, pattern):
-    if len(pattern) == 1:
-        return pattern in input_line
-    else:
-        raise RuntimeError(f"Unhandled pattern: {pattern}")
+       
+        if len(pattern)==1:
+            return pattern in input_line
+        elif pattern=="\\d":
+            return any(c.isdigit() for c in input_line)
+        else:
+            raise RuntimeError(f"Unhandled pattern: {pattern}")
 
 
 def main():
@@ -21,21 +24,14 @@ def main():
 
     # You can use print statements as follows for debugging, they'll be visible when running tests.
     print("Logs from your program will appear here!")
-
+    
     if match_pattern(input_line, pattern):
         exit(0)
     else:
         exit(1)
 
     # Uncomment this block to pass the first stage
-    def match_pattern(input_line, pattern):
-       
-        if len(pattern)==1:
-            return pattern in input_line
-        elif pattern=="\\d":
-            return any(c.isdigit() for c in input_line)
-        else:
-            raise RuntimeError(f"Unhandled pattern: {pattern}")
+    
         
         
 
