@@ -10,6 +10,8 @@ def match_pattern(input_line, pattern):
             return pattern in input_line
         elif pattern=="\\d":
             return any(c.isdigit() for c in input_line)
+        elif pattern=="\\w":
+            return any(c.isalnum() for c in input_line)
         else:
             raise RuntimeError(f"Unhandled pattern: {pattern}")
 
@@ -31,10 +33,6 @@ def main():
         exit(1)
 
     # Uncomment this block to pass the first stage
-    
-        
-        
-
 
 if __name__ == "__main__":
     main()
